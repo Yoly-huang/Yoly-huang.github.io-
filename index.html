@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#e8edf5">
+    <title>研究生适合度测试</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+
+    <!-- ① 欢迎页 -->
+    <div id="welcome-page" class="page active">
+        <div class="welcome-content">
+            <div class="badge">基于教育心理学理论设计</div>
+            <h1>你，适合读研吗？</h1>
+            <p class="subtitle">25道题 · 8个维度 · 科学评估你的读研潜力<br>从学术能力、心理素质到职业规划全方位分析</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">◈</div>
+                    <h3>科学维度</h3>
+                    <p>基于霍兰德理论与自我效能理论设计</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">◉</div>
+                    <h3>千人千面</h3>
+                    <p>结合学历专业GPA个性化分析</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">◍</div>
+                    <h3>多维呈现</h3>
+                    <p>雷达图+维度分析+专属报告</p>
+                </div>
+            </div>
+            <div class="stats-row">
+                <div class="stat"><span class="stat-num">25</span><span class="stat-label">道题目</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num">8</span><span class="stat-label">个维度</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><span class="stat-num">5</span><span class="stat-label">分钟完成</span></div>
+            </div>
+            <button id="start-btn" class="btn-primary" style="width:100%;max-width:280px;font-size:1.05rem;">
+                <span>开始测试</span>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <p class="disclaimer">结果仅供参考，不构成决策依据 · 数据仅在本地处理</p>
+        </div>
+    </div>
+
+    <!-- ② 背景信息页 -->
+    <div id="background-page" class="page">
+        <div class="page-header">
+            <div class="progress-bar">
+                <div class="progress" style="width:5%"></div>
+                <span class="progress-label">背景信息</span>
+            </div>
+            <h2>基本背景 <span class="step-indicator">第一步 / 共三步</span></h2>
+            <p class="page-desc">背景信息帮助我们更精准地评估你的适合度</p>
+        </div>
+        <form id="background-form" autocomplete="off">
+            <div class="form-group">
+                <label for="education">当前就读院校类型</label>
+                <select id="education" required>
+                    <option value="">请选择</option>
+                    <optgroup label="重点院校">
+                        <option value="985_211">985 / 211 / 双一流（含部分）</option>
+                        <option value="double_first_only">双一流学科高校（非985/211）</option>
+                    </optgroup>
+                    <optgroup label="普通本科">
+                        <option value="first_tier">一本普通院校</option>
+                        <option value="second_tier">二本院校</option>
+                    </optgroup>
+                    <optgroup label="其他">
+                        <option value="junior_college">专科/高职院校</option>
+                        <option value="other">其他</option>
+                    </optgroup>
+                </select>
+                <span class="form-hint">例：华南农业大学属于双一流学科高校</span>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="gpa_scale">GPA 计分制</label>
+                    <select id="gpa_scale" required>
+                        <option value="4">4 分制</option>
+                        <option value="5">5 分制</option>
+                        <option value="100">百分制</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gpa">你的 GPA</label>
+                    <input type="number" id="gpa" min="0" max="100" step="0.01" placeholder="如：3.5 / 85" inputmode="decimal" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="major">专业大类</label>
+                <select id="major" required>
+                    <option value="">请选择</option>
+                    <optgroup label="理工科">
+                        <option value="cs_ee">计算机 / 电子信息类</option>
+                        <option value="civil_arch">土木 / 建筑 / 城规类</option>
+                        <option value="mech_auto">机械 / 自动化 / 仪器类</option>
+                        <option value="chem_bio">化学 / 化工 / 生物类</option>
+                        <option value="physics_math">物理 / 数学 / 统计类</option>
+                        <option value="engineering_other">其他工科</option>
+                        <option value="science_other">其他理科</option>
+                    </optgroup>
+                    <optgroup label="人文社科">
+                        <option value="arts_humanities">文学 / 历史 / 哲学类</option>
+                        <option value="law">法学类</option>
+                        <option value="economics">经济学类</option>
+                        <option value="business">管理 / 商科类</option>
+                        <option value="social_science">社会学 / 新闻 / 传播类</option>
+                        <option value="education">教育学类</option>
+                    </optgroup>
+                    <optgroup label="医学与农学">
+                        <option value="medicine_clinical">临床医学类</option>
+                        <option value="medicine_other">其他医学（护理/药学等）</option>
+                        <option value="agriculture">农学 / 林学 / 水产类</option>
+                    </optgroup>
+                    <optgroup label="艺术与体育">
+                        <option value="arts_design">艺术设计类</option>
+                        <option value="other">其他</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="future_plan">毕业后的大致规划</label>
+                <select id="future_plan" required>
+                    <option value="">请选择</option>
+                    <option value="further_study">继续深造（读博 / 出国）</option>
+                    <option value="public_service">考公务员 / 事业编制</option>
+                    <option value="state_owned">进入国企 / 央企</option>
+                    <option value="private_company">进入私企 / 互联网</option>
+                    <option value="foreign_company">进入外资企业</option>
+                    <option value="self_employed">自由职业 / 创业</option>
+                    <option value="none">暂无规划 / 走一步看一步</option>
+                </select>
+            </div>
+            <button type="button" id="next-to-questionnaire" class="btn-primary" style="width:100%;">
+                <span>进入问卷</span>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </form>
+    </div>
+
+    <!-- ③ 问卷页 -->
+    <div id="questionnaire-page" class="page">
+        <div class="page-header">
+            <div class="progress-bar">
+                <div class="progress" id="question-progress"></div>
+                <span class="progress-label" id="progress-label-text"></span>
+            </div>
+            <div class="question-meta" id="question-meta"></div>
+        </div>
+        <div id="question-container"></div>
+        <div class="navigation">
+            <button id="prev-btn" class="btn-secondary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                上一题
+            </button>
+            <div class="nav-right">
+                <button id="next-btn" class="btn-primary">
+                    下一题
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button id="submit-btn" class="btn-primary" style="display:none;background:linear-gradient(135deg,#27ae60,#1a7a42);">
+                    查看结果
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ④ 结果页 -->
+    <div id="result-page" class="page">
+        <div class="result-content" id="result-capture-area">
+
+            <!-- 鼓励语 -->
+            <div class="encouragement-card">
+                <span class="enc-star">✦</span>
+                <p id="encouragement-text"></p>
+            </div>
+
+            <!-- Hero双卡 -->
+            <div class="hero-row">
+                <div class="hero-card hero-left">
+                    <div class="hero-eyebrow">综合评估结论</div>
+                    <div id="recommendation-title" class="hero-title"></div>
+                    <div id="score-tags" class="score-tags"></div>
+                    <div id="recommendation-text" class="hero-desc"></div>
+                </div>
+                <div class="hero-card hero-right">
+                    <div class="hero-eyebrow">适合度得分</div>
+                    <div class="score-donut-wrap">
+                        <svg viewBox="0 0 120 120" class="score-donut-svg">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="9"/>
+                            <circle id="score-ring-circle" cx="60" cy="60" r="50" fill="none"
+                                stroke="rgba(255,255,255,0.9)" stroke-width="9" stroke-linecap="round"
+                                stroke-dasharray="314" stroke-dashoffset="314"
+                                transform="rotate(-90 60 60)"/>
+                        </svg>
+                        <div class="score-donut-inner">
+                            <span id="final-score">0</span>
+                            <span class="score-pct">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三个小指标卡 -->
+            <div class="mini-row" id="mini-cards"></div>
+
+            <!-- 能力维度图谱 -->
+            <div class="panel-card">
+                <div class="panel-title"><span class="panel-icon">◈</span>能力维度图谱</div>
+                <div class="radar-container">
+                    <canvas id="radar-canvas" style="width:100%;display:block;"></canvas>
+                </div>
+            </div>
+
+            <!-- 维度深度分析 -->
+            <div class="panel-card">
+                <div class="panel-title"><span class="panel-icon">◉</span>维度深度分析</div>
+                <div id="dimension-details" class="dimension-grid"></div>
+            </div>
+
+        </div>
+
+        <!-- 底部按钮（截图时隐藏）-->
+        <div class="result-actions" id="result-actions">
+            <button id="restart-btn" class="btn-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                重新测试
+            </button>
+            <button id="save-btn" class="btn-outline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                保存图片
+            </button>
+            <button id="share-btn" class="btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                分享
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- 提示 toast -->
+<div class="save-toast" id="save-toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
